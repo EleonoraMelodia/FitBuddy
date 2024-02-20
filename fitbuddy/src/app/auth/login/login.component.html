@@ -1,1 +1,12 @@
-<p>login works!</p>
+<section>
+    <form #loginForm fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px" (ngSubmit)="onSubmit">
+        <mat-form-field>
+            <input type="email" ngModel name="e-mail" required >
+        </mat-form-field>
+        <mat-form-field>
+            <input type="password" ngModel name="password" required>
+        </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="loginForm">Send</button>
+    </form>
+
+</section>
