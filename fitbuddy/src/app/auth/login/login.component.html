@@ -1,12 +1,43 @@
 <section>
-    <form #loginForm fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px" (ngSubmit)="onSubmit">
-        <mat-form-field>
-            <input type="email" ngModel name="e-mail" required >
-        </mat-form-field>
-        <mat-form-field>
-            <input type="password" ngModel name="password" required>
-        </mat-form-field>
-    <button mat-raised-button type="submit" [disabled]="loginForm">Send</button>
-    </form>
-
+  <form
+    [formGroup]="loginForm"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="5px"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="email"
+        type="email"
+        placeholder="Your e-mail"
+      />
+      <mat-hint> Please, enter a valid e-mail</mat-hint>
+      <mat-error>
+        E-mail invalid, or missing
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="password"
+        type="password"
+        placeholder="your password"
+        minlength="6"
+      />
+      <mat-hint> Please, enter a valid password</mat-hint>
+      <mat-error>
+        The field can't be empty
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      type="submit"
+      color="accent"
+      [disabled]="loginForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
 </section>

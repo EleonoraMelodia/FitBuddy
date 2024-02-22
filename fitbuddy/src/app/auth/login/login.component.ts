@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-login",
@@ -7,9 +7,20 @@ import { NgForm } from "@angular/forms";
   styleUrl: "./login.component.css",
 })
 export class LoginComponent implements OnInit {
+    
+  loginForm: any;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      email: new FormControl ('', {validators : [Validators.email, Validators.required]}),
+      password: new FormControl('', { validators:  Validators.required  })
+    })
+  }
 
-  onSubmit(form: NgForm) {}
+  onSubmit () {
+    console.log(this.loginForm);
+    
+  }
 }
