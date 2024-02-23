@@ -4,11 +4,11 @@ a {
 }
 
 a:hover {
-  color: lightgrey;
+  color: rgb(249, 196, 172);
 }
 
 a:active {
-  color: lightslategrey;
+  color:  rgb(247, 88, 14);
 }
  
 
@@ -16,4 +16,16 @@ a:active {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+mat-toolbar {
+  padding: 50px;
+  background-color: rgb(102, 247, 92, 0.7);
+
+  
+}
+
+.logo{
+  padding: 20px;
+  width: 200px;
 }
