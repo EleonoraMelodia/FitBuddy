@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { MatDialogModule } from '@angular/material/dialog'; // Importa MatDialogModule
+import { MatDialogModule } from "@angular/material/dialog"; // Importa MatDialogModule
 
 import { AppRoutingModule } from "./app-routing.module";
 import { MaterialModule } from "./material.module";
@@ -17,13 +17,16 @@ import { NewTrainingComponent } from "./training/new-training/new-training.compo
 import { PastTrainingsComponent } from "./training/past-trainings/past-trainings.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
 
-import { HeaderComponent } from './navigation/header/header.component';
-import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
-import { StopTrainingComponent } from './training/current-training/stop-training.component';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HeaderComponent } from "./navigation/header/header.component";
+import { SidenavListComponent } from "./navigation/sidenav-list/sidenav-list.component";
+import { StopTrainingComponent } from "./training/current-training/stop-training.component";
+import { provideHttpClient, withFetch } from "@angular/common/http";
+import { AuthService } from "./auth/auth.service";
+import { LogoutComponent } from "./navigation/header/logout.component";
 
 @NgModule({
   declarations: [
+        LogoutComponent,
     AppComponent,
     SignupComponent,
     LoginComponent,
@@ -34,7 +37,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
-    StopTrainingComponent, // Rimuovi StopTrainingComponent dall'array entryComponents
+    StopTrainingComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     ReactiveFormsModule,
     MatDialogModule, // Aggiungi MatDialogModule agli imports
   ],
-  providers: [provideHttpClient(withFetch())],
+  providers: [AuthService, provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

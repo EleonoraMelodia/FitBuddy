@@ -7,10 +7,10 @@
       <div><a href="/"> <img class="logo" src="../../../assets/FITBUDDY (3).png" alt="LOGO"> </a></div>
       <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
         <ul fxLayout class="navigation-items" fxLayoutGap="20px">
-          <li><a href="/login"> Login</a></li>
-          <li><a href="/sign-up"> SignUp</a></li>
-          <li><a href="/training">Training</a></li>
-          <li><a>Logout</a></li>
+          <li *ngIf="!isAuth"><a href="/login"> Login</a></li>
+          <li *ngIf="!isAuth"><a href="/sign-up"> SignUp</a></li>
+          <li *ngIf="isAuth"><a href="/training">Training</a></li>
+          <li *ngIf="isAuth"><a style="cursor: pointer;" (click)="onLogout()">Logout</a></li>
         </ul>
       </div>
     </mat-toolbar>
