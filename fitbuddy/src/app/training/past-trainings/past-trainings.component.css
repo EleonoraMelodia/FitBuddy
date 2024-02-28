@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+}
+
+div {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+}
+
+
+
+mat-form-field {
+  width: 200px;
+
+}

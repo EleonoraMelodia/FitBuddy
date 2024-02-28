@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 @Injectable()
 export class AuthService {
   authChange = new Subject<boolean>();
-  private user!: User | null;
+  private user: User | null = null;
 
   constructor(private router: Router) {}
 
@@ -16,7 +16,7 @@ export class AuthService {
       email: authData.email,
       userId: Math.round(Math.random() * 10000).toString(),
     };
- this.authSuccessfully()
+    this.authSuccessfully();
   }
 
   login(authData: AuthData) {
@@ -24,7 +24,7 @@ export class AuthService {
       email: authData.email,
       userId: Math.round(Math.random() * 10000).toString(),
     };
-  this.authSuccessfully()
+    this.authSuccessfully();
   }
 
   logout() {

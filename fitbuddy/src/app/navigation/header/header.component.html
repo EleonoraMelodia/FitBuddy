@@ -10,6 +10,8 @@
           <li *ngIf="!isAuth"><a href="/login"> Login</a></li>
           <li *ngIf="!isAuth"><a href="/sign-up"> SignUp</a></li>
           <li *ngIf="isAuth"><a href="/training">Training</a></li>
+          <li *ngIf="isAuth"><a href="/recipes">Recipes</a></li>
+          <li *ngIf="isAuth"><a href="/calendar">Calendar</a></li>
           <li *ngIf="isAuth"><a style="cursor: pointer;" (click)="onLogout()">Logout</a></li>
         </ul>
       </div>

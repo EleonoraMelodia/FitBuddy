@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -13,10 +13,14 @@ import { MatListModule } from "@angular/material/list";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatCardModule } from "@angular/material/card";
 import { MatSelectModule } from "@angular/material/select";
+import { MatTableModule } from "@angular/material/table";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatSortModule } from "@angular/material/sort";
+import { MatPaginator } from "@angular/material/paginator";
 
 @NgModule({
   imports: [
+    MatPaginator,
     MatProgressSpinnerModule,
     MatCardModule,
     MatTabsModule,
@@ -31,9 +35,16 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatCheckboxModule,
     MatIconModule,
     MatSelectModule,
-   MatDialogModule,
+    MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatInputModule,
   ],
   exports: [
+    MatPaginator,
+    MatInputModule,
+    MatSortModule,
+    MatTableModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatCardModule,
