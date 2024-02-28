@@ -12,7 +12,7 @@ import { TrainingService } from "../training/training.service";
   styleUrls: ["./new-training.component.css"],
 })
 export class NewTrainingComponent implements OnInit, OnDestroy {
-  exercises: any = [];
+  exercises: Observable<DocumentData[]> = new Observable<DocumentData[]>();
   private subscription!: Subscription;
 
   constructor(
@@ -21,13 +21,11 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = collectionData(
+    this.exercises = collectionData(
       collection(this.firestore, "avaiableExercises")
-    ).subscribe((data: DocumentData[]) => {
-      this.exercises = data;
-      console.log(this.exercises);
-    });
+    );
   }
+
 
   onStartTraining(form: NgForm) {
     this.trainingService.startExercise(form.value.exercise);
