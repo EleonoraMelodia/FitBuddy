@@ -24,6 +24,7 @@ import { AuthService } from "./auth/auth.service";
 import { LogoutComponent } from "./navigation/header/logout.component";
 import { TrainingService } from "./training/training/training.service";
 
+import { enviroment } from "../enviroment/enviroment";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { getFirestore, provideFirestore } from "@angular/fire/firestore";
 
@@ -52,19 +53,7 @@ import { getFirestore, provideFirestore } from "@angular/fire/firestore";
     ReactiveFormsModule,
     MatDialogModule,
     provideFirestore(() => getFirestore()),
-    provideFirebaseApp(() =>
-      initializeApp({
-        projectId: "fitbuddy-86219",
-        appId: "1:839877927477:web:46b42cc59807000363877c",
-        databaseURL:
-          "https://fitbuddy-86219-default-rtdb.europe-west1.firebasedatabase.app",
-        storageBucket: "fitbuddy-86219.appspot.com",
-        apiKey: "AIzaSyB6b19TagWNJjYMSMrk-UXgm8ixUSAIySU",
-        authDomain: "fitbuddy-86219.firebaseapp.com",
-        messagingSenderId: "839877927477",
-        measurementId: "G-2TPG2JDVSP",
-      })
-    ),
+    provideFirebaseApp(() => initializeApp(enviroment.firebase)),
   ],
   providers: [AuthService, provideHttpClient(withFetch()), TrainingService],
   bootstrap: [AppComponent],

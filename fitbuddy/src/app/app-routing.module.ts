@@ -5,6 +5,8 @@ import { SignupComponent } from "./auth/signup/signup.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { TrainingComponent } from "./training/training/training.component";
 import { AuthGuard } from "./auth/auth.guard";
+import { RecipesComponent } from "./recipes/recipes.component";
+import { CalendarComponent } from "./calendar/calendar.component";
 
 const routes: Routes = [
   {
@@ -22,6 +24,14 @@ const routes: Routes = [
   {
     path: "training",
     component: TrainingComponent, /* canActivate: [AuthGuard] */
+  },
+  {
+    path: "recipes",
+    component: RecipesComponent, /* canActivate: [AuthGuard] */
+  },
+  {
+    path: "calendar",
+    component: CalendarComponent, /* canActivate: [AuthGuard] */
   },
 
 ];

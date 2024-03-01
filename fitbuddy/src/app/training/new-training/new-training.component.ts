@@ -1,10 +1,16 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Firestore, collection, collectionData, DocumentData } from "@angular/fire/firestore";
-import { Subscription } from "rxjs";
-import { Observable } from "rxjs-compat";
-import { Exercise } from "../training/exercise.module";
+import {
+  Firestore,
+  collection,
+  collectionData,
+  DocumentData,
+} from "@angular/fire/firestore";
+import { Subscription, Observable } from "rxjs";
+import { map } from "rxjs/operators";
+
 import { NgForm } from "@angular/forms";
 import { TrainingService } from "../training/training.service";
+import { Exercise } from "../training/exercise.module";
 
 @Component({
   selector: "app-new-training",
@@ -12,26 +18,25 @@ import { TrainingService } from "../training/training.service";
   styleUrls: ["./new-training.component.css"],
 })
 export class NewTrainingComponent implements OnInit, OnDestroy {
-  exercises: Observable<DocumentData[]> = new Observable<DocumentData[]>();
-  private subscription!: Subscription;
+  exercises!: Exercise[];
+   exerciseSubscription!: Subscription;
 
   constructor(
-    private trainingService: TrainingService,
-    private firestore: Firestore
-  ) {}
+    private trainingService: TrainingService) {}
+
 
   ngOnInit(): void {
-    this.exercises = collectionData(
-      collection(this.firestore, "avaiableExercises")
-    );
-  }
+  this.exerciseSubscription = this.trainingService.exercisesChanged.subscribe(exercises => this.exercises = exercises);
+  this.trainingService.fetchAvaibleExercises();
+}
 
 
   onStartTraining(form: NgForm) {
     this.trainingService.startExercise(form.value.exercise);
   }
 
+  //on destroy the component unsubscripe to optimazing the app
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.exerciseSubscription.unsubscribe();
   }
 }
